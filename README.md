@@ -15,55 +15,40 @@ You type a research question. Here's what comes back.
 **Ask a single advisor** and get feedback in their tradition's voice:
 
 ```
-You:  /harvard-strategist What's the competitive dynamics story in my study of hospital M&A?
-
-HBS:  Assessment: You have a clear empirical setting but you're underspecifying the unit
-      of analysis. Are you studying the acquiring firm's strategy, the target's vulnerability,
-      or the industry dynamics that make consolidation attractive? These are different questions
-      with different theoretical homes...
-
-      Key Questions:
-      1. What does the value chain look like in this market, and where does M&A change it?
-      2. Are you tracking competitive response from non-acquiring rivals?
-      ...
+/harvard-strategist What's the competitive dynamics story in my study of hospital M&A?
 ```
+
+> **Assessment:** You have a clear empirical setting but you're underspecifying the unit of analysis. Are you studying the acquiring firm's strategy, the target's vulnerability, or the industry dynamics that make consolidation attractive? These are different questions with different theoretical homes...
+>
+> **Key Questions:**
+> 1. What does the value chain look like in this market, and where does M&A change it?
+> 2. Are you tracking competitive response from non-acquiring rivals?
 
 **Convene a faculty meeting** and get 3–5 advisors arguing about your question:
 
 ```
-You:  /faculty-meeting Should I use institutional theory or resource-based view
-      to study SOE reform in Vietnam?
-
-Panel: harvard-strategist, ceibs-navigator, cbs-critical
-
-[Each advisor gives their full assessment in their own voice, then:]
-
-Synthesis:
-  Where they agree: All three insist you cannot study SOE reform without
-  specifying the state's role — it is not "context," it is the phenomenon.
-
-  Where they diverge: Harvard frames this as competitive repositioning under
-  institutional change. CEIBS argues the institutional duality (market logic +
-  state logic) IS the research question, not background. CBS asks whose interests
-  "reform" serves and whether the word itself smuggles in a neoliberal assumption.
-
-  Productive tension: The disagreement between CEIBS and CBS is the most
-  generative — is "institutional navigation" a neutral description or a
-  euphemism for elite capture?
+/faculty-meeting Should I use institutional theory or resource-based view to study SOE reform in Vietnam?
 ```
+
+The orchestrator picks a panel (here: harvard-strategist, ceibs-navigator, cbs-critical), each gives their full assessment in their own voice, then:
+
+> **Synthesis**
+>
+> *Where they agree:* All three insist you cannot study SOE reform without specifying the state's role — it is not "context," it is the phenomenon.
+>
+> *Where they diverge:* Harvard frames this as competitive repositioning under institutional change. CEIBS argues the institutional duality (market logic + state logic) IS the research question, not background. CBS asks whose interests "reform" serves and whether the word itself smuggles in a neoliberal assumption.
+>
+> *Productive tension:* The disagreement between CEIBS and CBS is the most generative — is "institutional navigation" a neutral description or a euphemism for elite capture?
 
 **Find the right advisor** when you're not sure who to ask:
 
 ```
-You:  /find-advisor I'm studying family business succession in Mexican multinationals
-
-Top matches:
-  1. egade-family — EGADE (Monterrey Tech). Specializes in exactly this: Latin American
-     family enterprises, multi-Latinas, succession dynamics. [Planned — not yet available]
-  2. harvard-strategist — Would frame succession as a general management and governance
-     question. Strong on the strategic implications, weaker on family dynamics.
-  ...
+/find-advisor I'm studying family business succession in Mexican multinationals
 ```
+
+> **Top matches:**
+> 1. **egade-family** — EGADE (Monterrey Tech). Specializes in exactly this: Latin American family enterprises, multi-Latinas, succession dynamics. *[Planned — not yet available]*
+> 2. **harvard-strategist** — Would frame succession as a general management and governance question. Strong on the strategic implications, weaker on family dynamics.
 
 ## What You Need
 
@@ -78,7 +63,7 @@ Claude Code runs in two ways — pick whichever you prefer:
 1. **Claude Code** — Install it by following [Anthropic's setup guide](https://docs.anthropic.com/en/docs/claude-code/getting-started). It takes about 5 minutes.
 2. **A Claude subscription** — Claude Code requires a [Max plan](https://claude.ai) (~$100/month) or API credits. There is no free tier for Claude Code.
 
-> **On cost:** We know $100/month is real money on a grad student stipend. If you're evaluating whether it's worth it: Claude Code is useful far beyond Faculty Meeting — it can help with literature searches, data analysis, writing, and coding. Faculty Meeting is one of many things it can do. Some universities provide institutional access — check with your IT department.
+> **On cost:** We know $100/month is real money on a grad student stipend. If you're evaluating whether it's worth it: Claude Code is useful far beyond Faculty Meeting — it can help with literature searches, data analysis, writing, and coding. Faculty Meeting is one of many things it can do.
 
 ## Install
 
@@ -95,7 +80,7 @@ That's it. The advisors are available immediately, and you'll automatically get 
 
 ### Option B: Manual
 
-If you prefer to manage updates yourself:
+If you prefer to manage updates yourself (requires [git](https://git-scm.com/downloads)):
 
 ```bash
 git clone https://github.com/phdemotions/faculty-meeting.git
@@ -115,7 +100,7 @@ The install script checks for updates automatically each time you run it.
 | `/ceibs-navigator` | CEIBS (Shanghai) | China's state-capitalism interface, institutional duality, guanxi. Stress-tests Western frameworks against Chinese evidence. |
 | `/gibs-pioneer` | GIBS (Johannesburg) | African emerging markets, Ubuntu leadership, base-of-pyramid strategy. Challenges deficit framing, centers African agency. |
 | `/cbs-critical` | Copenhagen Business School | Critical management studies, institutional logics, power. Asks "whose interests does this framing serve?" |
-| `/herbert-simon` | Historical Giant | Bounded rationality, satisficing, organizational design. Asks "are you assuming optimization? What if actors satisfice instead?" |
+| `/herbert-simon` | Herbert A. Simon | Bounded rationality, satisficing, organizational design. Asks "are you assuming optimization? What if actors satisfice instead?" |
 
 ### Meta-Tools
 
@@ -124,6 +109,7 @@ The install script checks for updates automatically each time you run it.
 | `/faculty-meeting` | Picks 3–5 advisors who will disagree productively about your question. You can also choose the panel: `/faculty-meeting --with harvard-strategist,cbs-critical,gibs-pioneer` |
 | `/find-advisor` | Describes your question and returns a ranked list of the best-fit advisors with explanations. |
 | `/ai-methodologist` | The faculty member who never stops reading. Advises on AI in your research (LLMs for lit review, AI disclosure norms, what your committee expects). Can also audit any advisor for staleness. |
+| `/report-issue` | Something feel off about an advisor? Report it and a GitHub issue gets filed automatically so the maintainers can fix it. |
 
 ### 35 More Coming
 
@@ -174,10 +160,22 @@ This is how real intellectual progress works. Not agreement. Friction.
 
 ## Design Principles
 
-1. **Not a caricature.** Each persona represents the best version of its tradition. The Chicago economist isn't a strawman free-market ideologue — they're a rigorous scholar who takes price theory seriously as a lens.
+1. **Not a caricature.** Each persona represents the best version of its tradition. The CBS critical theorist isn't a perpetual contrarian — they're a rigorous scholar who believes examining power is a condition of intellectual rigor.
 2. **Honest about limits.** Every advisor names their blind spots. The Harvard strategist admits they center Western corporate forms. The critical theorist admits they're better at diagnosis than prescription.
 3. **Actionable.** The advice helps you make a concrete decision — which theory, which method, which journal, how to frame your contribution.
 4. **Globally representative.** Not just Harvard and Wharton. African, Asian, Latin American, and Middle Eastern traditions are first-class voices with equal standing.
+
+## Feedback
+
+If an advisor gives bad advice, sounds generic, or feels like a caricature of its tradition — tell us:
+
+```
+/report-issue cbs-critical It didn't push back on my positivist framing at all, just agreed with everything
+```
+
+This files a GitHub issue automatically so we can prioritize the fix. Your feedback is how the advisors get better.
+
+You can also [open an issue manually](https://github.com/phdemotions/faculty-meeting/issues/new).
 
 ## Contributing
 

@@ -24,7 +24,7 @@ if [ ! -d "${HOME}/.claude" ]; then
   echo "======================"
   echo ""
   echo "Claude Code doesn't appear to be installed yet."
-  echo "Faculty Meeting runs inside Claude Code (Anthropic's AI terminal agent)."
+  echo "Faculty Meeting runs inside Claude Code (Anthropic's AI assistant)."
   echo ""
   echo "To install Claude Code:"
   echo "  https://docs.anthropic.com/en/docs/claude-code/getting-started"

@@ -8,7 +8,7 @@ How Faculty Meeting's matching and orchestration works.
 catalog.yaml          → Machine-readable metadata for all personas
 skills/*/SKILL.md     → Advisory persona definition + protocol
 skills/*/references/  → Deep tradition context (tradition.md)
-skills/meta/          → Orchestrator skills (faculty-meeting, find-advisor)
+skills/meta/          → Orchestrator and utility skills (faculty-meeting, find-advisor, ai-methodologist)
 ```
 
 ## Matching Engine

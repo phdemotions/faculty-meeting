@@ -13,15 +13,16 @@ The short version:
 3. **Write the SKILL.md.** Follow the existing pattern — identity, how they think, how they advise, what they value, what they push back on, voice description.
 4. **Write the tradition.md.** Lineage, core commitments, methodology, evaluation criteria, signature questions, known blind spots, journal affinities, contrasts.
 5. **Update catalog.yaml.** Set `status: built` and verify all metadata fields.
-6. **Test it.** Invoke the persona with a real research question. Does the voice sound distinct? Does the advice differ meaningfully from other personas?
-7. **Submit a PR.**
+6. **Add the plugin symlink.** Create a symlink in `.claude/skills/` pointing to your skill directory (see [docs/ADDING-A-PERSONA.md](docs/ADDING-A-PERSONA.md) for details).
+7. **Test it.** Invoke the persona with a real research question. Does the voice sound distinct? Does the advice differ meaningfully from other personas?
+8. **Submit a PR.**
 
 ## Quality Criteria
 
 A persona is done when:
 
 - **Distinct voice** — Read the output without the persona name. Can you tell which tradition it comes from?
-- **Genuine disagreement** — Put it in a `/faculty-meeting` with its `contrasts-with` peers. Do they produce meaningfully different advice?
+- **Genuine disagreement** — Put it in a `/faculty-meeting` with the advisors it's designed to disagree with (listed in its `contrasts-with` field in catalog.yaml). Do they produce meaningfully different advice?
 - **Actionable** — Does the advice help a researcher make a concrete decision?
 - **Honest about limits** — Are the blind spots specific enough that a user can decide when NOT to use this advisor?
 - **Not a caricature** — Does it represent the best version of the tradition, not a strawman?

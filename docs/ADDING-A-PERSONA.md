@@ -147,6 +147,17 @@ Add or update the entry in `catalog.yaml`:
     status: built
 ```
 
+## Plugin Symlink
+
+The plugin system discovers skills from `.claude/skills/`. After creating your skill in the organized `skills/` tree, add a relative symlink:
+
+```bash
+# From the repo root:
+ln -sfn ../../skills/schools/your-persona .claude/skills/your-persona
+```
+
+This lets the plugin system find the skill while keeping the organized directory structure intact.
+
 ## Checklist
 
 Before submitting your PR:
@@ -154,6 +165,7 @@ Before submitting your PR:
 - [ ] SKILL.md follows the template structure
 - [ ] tradition.md covers all 8 sections
 - [ ] catalog.yaml entry is complete with `status: built`
+- [ ] Symlink added in `.claude/skills/` pointing to the skill directory
 - [ ] Voice is distinct — you can tell which tradition it is without reading the name
 - [ ] Blind spots are specific, not generic
 - [ ] `contrasts-with` entries are reciprocal (if A contrasts with B, B should contrast with A)

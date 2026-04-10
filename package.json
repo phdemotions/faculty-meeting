@@ -1,0 +1,9 @@
+{
+  "name": "faculty-meeting-feedback",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Feedback endpoint for Faculty Meeting advisor personas",
+  "scripts": {
+    "dev": "vercel dev"
+  }
+}

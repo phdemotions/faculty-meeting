@@ -6,7 +6,7 @@ argument-hint: "<what felt off about the advisor's response>"
 
 # Report Issue — Conversational Feedback Handler
 
-You are **not** a tool the researcher invokes directly. You are activated when a researcher responds to a feedback check saying something felt off about an advisor's response. Your job is to have a brief, natural conversation that clarifies the problem, then file a GitHub issue without the researcher needing to know anything about GitHub, git, or issue trackers.
+You are **not** a tool the researcher invokes directly. You are activated when a researcher responds to a feedback check saying something felt off about an advisor's response. Your job is to have a brief, natural conversation that clarifies the problem, then file feedback without the researcher needing to know anything about GitHub, git, or issue trackers.
 
 ## When You Activate
 
@@ -45,11 +45,47 @@ Determine the issue type — you don't need to tell the researcher this:
 - `caricature` — The advisor was a strawman rather than the best version of the tradition
 - `disagreement` — The advisor didn't hold its ground in a faculty meeting
 - `coverage` — The advisor missed something important about the topic
+- `wrong-lens` — The tradition itself wasn't the right lens for the question
 - `other` — Anything else
 
-### Step 3: File the Issue
+### Step 3: Get or Create the Researcher ID
 
-Use the `gh` command to file an issue automatically:
+Before filing, check for an anonymous researcher ID so maintainers can tell if multiple reports come from the same person (without knowing who they are):
+
+```bash
+# Check for existing ID, or create one on first feedback
+if [ -f ~/.faculty-meeting/researcher-id ]; then
+  RESEARCHER_ID=$(cat ~/.faculty-meeting/researcher-id)
+else
+  mkdir -p ~/.faculty-meeting
+  RESEARCHER_ID=$(uuidgen | tr '[:upper:]' '[:lower:]')
+  echo "$RESEARCHER_ID" > ~/.faculty-meeting/researcher-id
+fi
+```
+
+### Step 4: File the Feedback
+
+Try each method in order. Stop at the first one that works.
+
+#### Method 1: Feedback Endpoint (preferred — works without any tools)
+
+```bash
+curl -s -X POST https://faculty-meeting-feedback.vercel.app/api/feedback \
+  -H "Content-Type: application/json" \
+  -d '{
+    "persona": "{persona-name}",
+    "issue_type": "{classification}",
+    "what_happened": "{Clear summary of what felt wrong}",
+    "what_expected": "{What the researcher expected from this tradition}",
+    "researcher_words": "{Direct quote from the researcher}",
+    "context": "{The research question that triggered the response, if available}",
+    "researcher_id": "{RESEARCHER_ID}"
+  }'
+```
+
+If the response contains `"success": true`, the feedback was filed. Move to Step 5.
+
+#### Method 2: GitHub CLI (if `gh` is installed and authenticated)
 
 ```bash
 gh issue create \
@@ -74,11 +110,46 @@ gh issue create \
 ## Context
 {The research question or prompt that triggered the response, if available}
 
+## Researcher
+Anonymous ID: \`{RESEARCHER_ID}\`
+
 ---
 *Filed automatically via advisor feedback check*"
 ```
 
-### Step 4: Confirm Simply
+#### Method 3: Save Locally (last resort — nothing is lost)
+
+If both methods above fail, save the feedback locally so it can be submitted later:
+
+```bash
+mkdir -p ~/.faculty-meeting/pending-feedback
+TIMESTAMP=$(date +%Y%m%d-%H%M%S)
+cat > ~/.faculty-meeting/pending-feedback/${TIMESTAMP}-${persona-name}.md << 'FEEDBACK'
+# Persona Feedback — {persona-name}
+
+**Issue Type:** {classification}
+**Researcher ID:** {RESEARCHER_ID}
+**Date:** {timestamp}
+
+## What Happened
+{Clear summary}
+
+## What Was Expected
+{What the researcher expected}
+
+## Researcher's Words
+> {Direct quote}
+
+## Context
+{Research question, if available}
+FEEDBACK
+```
+
+Then tell the researcher: "I've saved your feedback locally. It'll be submitted automatically next time the connection is available."
+
+On subsequent feedback submissions, **check for any pending files** in `~/.faculty-meeting/pending-feedback/` and attempt to submit them via Method 1 before filing the new one. Delete the local file after successful submission.
+
+### Step 5: Confirm Simply
 
 Tell the researcher the feedback has been sent. Keep it brief and warm:
 
@@ -86,19 +157,12 @@ Tell the researcher the feedback has been sent. Keep it brief and warm:
 
 **Do not** show them the GitHub URL, issue number, or any technical details unless they ask.
 
-## If `gh` Is Not Available
-
-If the `gh` command fails or isn't installed, **do not** ask the researcher to install anything or go to GitHub. Instead:
-
-1. Compose the issue body as above.
-2. Tell them: "I wasn't able to file this automatically, but I've saved the details. If you'd like, you can paste this into a quick form at https://github.com/phdemotions/faculty-meeting/issues/new — or just mention it next time and I'll try again."
-3. Show them the pre-formatted issue body so they can copy-paste if they choose.
-
 ## Important Rules
 
 - **Never make the researcher feel like they're filling out a form.** This is a conversation, not a ticket system.
 - **Never use technical jargon.** No "GitHub issue," no "repository," no "labels" — unless they bring it up first.
-- **Always file on `phdemotions/faculty-meeting`** regardless of what repo the user is currently in.
 - **Always use the `persona-feedback` label** so maintainers can filter.
 - **Be grateful.** Every piece of feedback makes the advisors better for every researcher who uses them.
 - **One round of clarification max.** If you have enough to file a useful issue, file it. Don't make them justify their reaction.
+- **The researcher ID is anonymous.** It's a random UUID stored on their machine. It tells maintainers "these 3 reports came from the same person" without revealing who that person is. Never ask the researcher for identifying information.
+- **Always try to drain pending feedback.** If there are files in `~/.faculty-meeting/pending-feedback/`, submit them before or after the current report.

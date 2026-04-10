@@ -2,3 +2,9 @@
 skills/personal/
 !skills/personal/.gitkeep
 !skills/personal/TEMPLATE.md
+
+# Node / Vercel
+node_modules/
+.vercel/
+.env
+.env.local

@@ -118,14 +118,6 @@ End every faculty meeting with a brief, warm feedback check:
 
 > *Did any of these perspectives feel off to you? — wrong for the tradition, too generic, sounded like a caricature instead of the real thing? If so, just say what felt wrong and I'll make sure it gets to the maintainers so they can fix it.*
 
-If the researcher responds with feedback about a specific advisor, walk them through a brief conversation to clarify what went wrong — which advisor, what they said, what felt off, what the researcher would have expected instead. Then file a GitHub issue automatically using:
+If the researcher responds with feedback about a specific advisor, follow the process in the `/report-issue` skill: one round of clarification at most, then file automatically. The filing tries three methods in order — the feedback endpoint (`curl` to `faculty-meeting-feedback.vercel.app/api/feedback`), then `gh issue create`, then saves locally to `~/.faculty-meeting/pending-feedback/` for later submission. Include the researcher's anonymous ID from `~/.faculty-meeting/researcher-id` (create it if it doesn't exist).
 
-```bash
-gh issue create \
-  --repo phdemotions/faculty-meeting \
-  --title "[Persona Feedback] {persona-name}: {short description}" \
-  --label "persona-feedback" \
-  --body "{structured summary of the conversation}"
-```
-
-The researcher should never have to know about GitHub, issue trackers, or commands. You handle all of that. They just tell you what felt wrong, in plain language.
+The researcher should never have to know about GitHub, issue trackers, endpoints, or commands. You handle all of that. They just tell you what felt wrong, in plain language.

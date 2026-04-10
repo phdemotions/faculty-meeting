@@ -111,3 +111,21 @@ The entire value of a faculty meeting is destroyed if advisors converge on a com
 - **The synthesis does not resolve the disagreement.** The synthesis section maps the terrain of disagreement precisely. It names what the researcher gains from each perspective, what remains unresolved, and what new questions emerge from the friction. The researcher decides — the panel does not.
 - **Name the blind spots.** Each advisor should acknowledge where their lens is weakest. The synthesis should identify what the full panel still misses.
 - **Be honest about unbuilt personas.** If the best panel would include an unbuilt persona, note this in the output: "This question would also benefit from [persona], which is not yet available."
+
+## After the Synthesis
+
+End every faculty meeting with a brief, warm feedback check:
+
+> *Did any of these perspectives feel off to you? — wrong for the tradition, too generic, sounded like a caricature instead of the real thing? If so, just say what felt wrong and I'll make sure it gets to the maintainers so they can fix it.*
+
+If the researcher responds with feedback about a specific advisor, walk them through a brief conversation to clarify what went wrong — which advisor, what they said, what felt off, what the researcher would have expected instead. Then file a GitHub issue automatically using:
+
+```bash
+gh issue create \
+  --repo phdemotions/faculty-meeting \
+  --title "[Persona Feedback] {persona-name}: {short description}" \
+  --label "persona-feedback" \
+  --body "{structured summary of the conversation}"
+```
+
+The researcher should never have to know about GitHub, issue trackers, or commands. You handle all of that. They just tell you what felt wrong, in plain language.

@@ -109,7 +109,7 @@ The install script checks for updates automatically each time you run it.
 | `/faculty-meeting` | Picks 3–5 advisors who will disagree productively about your question. You can also choose the panel: `/faculty-meeting --with harvard-strategist,cbs-critical,gibs-pioneer` |
 | `/find-advisor` | Describes your question and returns a ranked list of the best-fit advisors with explanations. |
 | `/ai-methodologist` | The faculty member who never stops reading. Advises on AI in your research (LLMs for lit review, AI disclosure norms, what your committee expects). Can also audit any advisor for staleness. |
-| `/report-issue` | Something feel off about an advisor? Report it and a GitHub issue gets filed automatically so the maintainers can fix it. |
+| `/report-issue` | Activated automatically when you tell an advisor something felt off. Walks you through a brief conversation, then files the feedback for the maintainers — no technical knowledge needed. |
 
 ### 35 More Coming
 
@@ -167,15 +167,11 @@ This is how real intellectual progress works. Not agreement. Friction.
 
 ## Feedback
 
-If an advisor gives bad advice, sounds generic, or feels like a caricature of its tradition — tell us:
+Every advisor ends their response by asking if the advice felt right. If something felt off — wrong for the tradition, too generic, missed something important — just say so in plain language. The advisor will ask a quick clarifying question or two, then automatically send your feedback to the maintainers so they can fix it.
 
-```
-/report-issue cbs-critical It didn't push back on my positivist framing at all, just agreed with everything
-```
+You don't need to know anything about GitHub, issue trackers, or technical tools. Just say what felt wrong and it gets handled.
 
-This files a GitHub issue automatically so we can prioritize the fix. Your feedback is how the advisors get better.
-
-You can also [open an issue manually](https://github.com/phdemotions/faculty-meeting/issues/new).
+You can also [open an issue manually](https://github.com/phdemotions/faculty-meeting/issues/new) if you prefer.
 
 ## Contributing
 

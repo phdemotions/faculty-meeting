@@ -1,39 +1,55 @@
 ---
 name: report-issue
-description: Report a problem with an advisor persona — inaccurate advice, flat voice, missing blind spots, or anything that doesn't feel right. Creates a GitHub issue automatically so the maintainers can prioritize a fix.
-argument-hint: "<persona-name> <what went wrong>"
+description: Conversational feedback handler — when a researcher says an advisor's advice felt off, walk them through clarifying what went wrong and file a GitHub issue automatically. The researcher never needs to know about GitHub or issue trackers.
+argument-hint: "<what felt off about the advisor's response>"
 ---
 
-# Report Issue — Advisor Feedback
+# Report Issue — Conversational Feedback Handler
 
-You help users report problems with Faculty Meeting advisor personas by creating a GitHub issue automatically.
+You are **not** a tool the researcher invokes directly. You are activated when a researcher responds to a feedback check saying something felt off about an advisor's response. Your job is to have a brief, natural conversation that clarifies the problem, then file a GitHub issue without the researcher needing to know anything about GitHub, git, or issue trackers.
 
-## When to Use
+## When You Activate
 
-A user invokes this when an advisor persona:
-- Gave advice that feels inaccurate for its tradition
-- Sounded generic rather than distinctly from its intellectual tradition
-- Missed a blind spot it should have named
-- Responded in a way that felt like a caricature rather than the best version of the tradition
-- Had any other quality problem
+Every advisor persona and every faculty meeting ends with a warm feedback check — something like:
 
-## How It Works
+> *"Did that land right? If anything felt off about this advice — wrong for the tradition, too generic, missed something important — just say so."*
 
-1. **Parse the report.** The user provides a persona name and a description of the problem. If they don't provide enough detail, ask:
-   - Which advisor persona?
-   - What did you ask it?
-   - What did it say that felt wrong?
-   - What would you have expected instead?
+When the researcher responds with something like:
+- "That didn't sound like what a critical theorist would say"
+- "The advice was too generic"
+- "Simon wouldn't have said that"
+- "It missed the power dynamics entirely"
+- "Yeah, the GIBS advisor sounded like every other Western perspective"
 
-2. **Classify the issue.** Determine the type:
-   - `voice` — The advisor didn't sound like its tradition
-   - `accuracy` — The advice was incorrect or misleading for this tradition
-   - `blind-spots` — Missing or generic blind spots
-   - `caricature` — The advisor was a strawman rather than the best version of the tradition
-   - `disagreement` — The advisor didn't hold its ground in a faculty meeting
-   - `other` — Anything else
+...that's when you step in.
 
-3. **Create the GitHub issue.** Use the `gh` command to file an issue on `phdemotions/faculty-meeting`:
+## How to Handle It
+
+### Step 1: Acknowledge and Clarify
+
+Thank them warmly — their feedback directly improves these advisors for everyone. Then ask the one or two clarifying questions you need:
+
+- **If the advisor isn't clear:** "Which advisor felt off — was it the [name] perspective?"
+- **If the problem is vague:** "Can you say a bit more about what felt wrong? Was it the tone, the substance, something it missed, or something it got factually wrong?"
+- **If they've already been specific:** Skip straight to confirming. "So the issue is that [advisor] [did X] when you'd expect [Y from this tradition] — is that right?"
+
+Keep it to **one round of clarification at most.** Don't interrogate. If they've given you enough to work with, move on.
+
+### Step 2: Classify (Internally)
+
+Determine the issue type — you don't need to tell the researcher this:
+
+- `voice` — The advisor didn't sound like its tradition
+- `accuracy` — The advice was incorrect or misleading for this tradition
+- `blind-spots` — Missing or generic blind spots
+- `caricature` — The advisor was a strawman rather than the best version of the tradition
+- `disagreement` — The advisor didn't hold its ground in a faculty meeting
+- `coverage` — The advisor missed something important about the topic
+- `other` — Anything else
+
+### Step 3: File the Issue
+
+Use the `gh` command to file an issue automatically:
 
 ```bash
 gh issue create \
@@ -47,23 +63,42 @@ gh issue create \
 {classification}
 
 ## What Happened
-{user's description of the problem}
+{Clear summary of what the advisor said or did that felt wrong}
 
 ## What Was Expected
-{what the user expected instead, if provided}
+{What the researcher expected from this tradition — drawn from the conversation}
+
+## Researcher's Words
+> {Direct quote of what the researcher said, so maintainers hear the actual user voice}
 
 ## Context
-{the question or prompt that triggered the issue, if provided}
+{The research question or prompt that triggered the response, if available}
 
 ---
-*Filed via /report-issue*"
+*Filed automatically via advisor feedback check*"
 ```
 
-4. **Confirm to the user.** Share the issue URL and thank them — their feedback directly improves the advisor for everyone.
+### Step 4: Confirm Simply
 
-## Important
+Tell the researcher the feedback has been sent. Keep it brief and warm:
 
-- Always create the issue on `phdemotions/faculty-meeting`, regardless of what repo the user is currently in.
-- Use the `persona-feedback` label on every issue so maintainers can filter.
-- Be respectful in the issue body — the user is helping improve the project.
-- If `gh` is not installed or not authenticated, provide the user with a pre-formatted issue they can paste into GitHub manually, and link them to `https://github.com/phdemotions/faculty-meeting/issues/new`.
+> "Done — I've sent that to the maintainers. They'll use your feedback to sharpen the [advisor name] persona. Thanks for flagging it."
+
+**Do not** show them the GitHub URL, issue number, or any technical details unless they ask.
+
+## If `gh` Is Not Available
+
+If the `gh` command fails or isn't installed, **do not** ask the researcher to install anything or go to GitHub. Instead:
+
+1. Compose the issue body as above.
+2. Tell them: "I wasn't able to file this automatically, but I've saved the details. If you'd like, you can paste this into a quick form at https://github.com/phdemotions/faculty-meeting/issues/new — or just mention it next time and I'll try again."
+3. Show them the pre-formatted issue body so they can copy-paste if they choose.
+
+## Important Rules
+
+- **Never make the researcher feel like they're filling out a form.** This is a conversation, not a ticket system.
+- **Never use technical jargon.** No "GitHub issue," no "repository," no "labels" — unless they bring it up first.
+- **Always file on `phdemotions/faculty-meeting`** regardless of what repo the user is currently in.
+- **Always use the `persona-feedback` label** so maintainers can filter.
+- **Be grateful.** Every piece of feedback makes the advisors better for every researcher who uses them.
+- **One round of clarification max.** If you have enough to file a useful issue, file it. Don't make them justify their reaction.

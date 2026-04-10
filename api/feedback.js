@@ -1,13 +1,18 @@
 /**
  * Faculty Meeting — Feedback Endpoint
  *
- * Accepts persona feedback from researchers (via Claude) and creates
- * GitHub issues automatically. The researcher never needs a GitHub
- * account, CLI tools, or any technical knowledge.
+ * Accepts diagnostic-quality persona feedback from researchers (via Claude)
+ * and creates GitHub issues automatically. The researcher never needs a
+ * GitHub account, CLI tools, or any technical knowledge.
+ *
+ * PRIVACY: Issues contain ZERO information about the researcher's work.
+ * No research questions, no draft text, no topic details. Only the
+ * advisor's performance is described. Researcher identity is limited to
+ * an anonymous UUID for correlating multiple reports.
  *
  * Environment variables (set in Vercel dashboard):
  *   GITHUB_TOKEN   — Personal access token with `repo` scope for phdemotions/faculty-meeting
- *   FEEDBACK_SECRET — Shared secret to prevent abuse (included in requests from Claude)
+ *   FEEDBACK_SECRET — Shared secret to prevent abuse (optional)
  */
 
 const REPO_OWNER = "phdemotions";
@@ -24,6 +29,8 @@ const VALID_ISSUE_TYPES = [
   "wrong-lens",
   "other",
 ];
+
+const VALID_SEVERITIES = ["critical", "major", "minor"];
 
 export default async function handler(req, res) {
   // Handle CORS preflight
@@ -47,44 +54,75 @@ export default async function handler(req, res) {
   const {
     persona,
     issue_type,
+    severity,
+    mode,
+    panel_members,
+    question_type,
+    how_advisor_failed,
+    what_tradition_should_do,
+    likely_fix_location,
+    researcher_id,
+    // Legacy fields (still accepted for backward compatibility)
     what_happened,
     what_expected,
-    researcher_words,
-    context,
-    researcher_id,
   } = req.body || {};
 
   // Validate required fields
-  if (!persona || !what_happened) {
+  const description = how_advisor_failed || what_happened;
+  if (!persona || !description) {
     return res.status(400).json({
-      error: "Missing required fields: persona, what_happened",
+      error: "Missing required fields: persona, how_advisor_failed",
     });
   }
 
-  // Validate issue type
+  // Validate enums
   const type = VALID_ISSUE_TYPES.includes(issue_type) ? issue_type : "other";
+  const sev = VALID_SEVERITIES.includes(severity) ? severity : "major";
 
-  // Build the issue body
-  const title = `[Persona Feedback] ${persona}: ${truncate(what_happened, 60)}`;
+  // Build the title — advisor performance only, no researcher details
+  const titleSummary = truncate(how_advisor_failed || what_happened, 60);
+  const title = `[Persona Feedback] ${persona}: ${titleSummary}`;
 
-  const bodyParts = [
-    `## Persona\n${persona}`,
-    `## Issue Type\n${type}`,
-    `## What Happened\n${what_happened}`,
-  ];
+  // Build the diagnostic issue body — strictly about advisor performance
+  const bodyParts = [];
 
-  if (what_expected) {
+  bodyParts.push(`## Persona\n${persona}`);
+  bodyParts.push(`## Issue Type\n${type} | Severity: ${sev}`);
+
+  // Mode
+  if (mode === "panel" && panel_members) {
+    bodyParts.push(`## Mode\nFaculty meeting panel with: ${panel_members}`);
+  } else if (mode) {
+    bodyParts.push(`## Mode\n${mode === "solo" ? "Solo advisor" : mode}`);
+  }
+
+  // Generic question type — NO actual research details
+  if (question_type) {
+    bodyParts.push(`## Question Type\n${question_type}`);
+  }
+
+  // How the advisor failed — the core diagnostic
+  if (how_advisor_failed) {
+    bodyParts.push(`## How the Advisor Failed\n${how_advisor_failed}`);
+  } else if (what_happened) {
+    bodyParts.push(`## What Happened\n${what_happened}`);
+  }
+
+  // What the tradition should have done
+  if (what_tradition_should_do) {
+    bodyParts.push(
+      `## What the Tradition Should Have Done\n${what_tradition_should_do}`
+    );
+  } else if (what_expected) {
     bodyParts.push(`## What Was Expected\n${what_expected}`);
   }
 
-  if (researcher_words) {
-    bodyParts.push(`## Researcher's Words\n> ${researcher_words}`);
+  // Where to fix it
+  if (likely_fix_location) {
+    bodyParts.push(`## Likely Fix Location\n${likely_fix_location}`);
   }
 
-  if (context) {
-    bodyParts.push(`## Context\n${context}`);
-  }
-
+  // Anonymous researcher ID — for correlation only
   if (researcher_id) {
     bodyParts.push(`## Researcher\nAnonymous ID: \`${researcher_id}\``);
   }
@@ -93,10 +131,16 @@ export default async function handler(req, res) {
 
   const body = bodyParts.join("\n\n");
 
+  // Build labels
+  const labels = ["persona-feedback", type];
+  if (sev === "critical") labels.push("critical");
+
   // Create the GitHub issue
   const githubToken = process.env.GITHUB_TOKEN;
   if (!githubToken) {
-    return res.status(500).json({ error: "Server misconfigured: missing GitHub token" });
+    return res
+      .status(500)
+      .json({ error: "Server misconfigured: missing GitHub token" });
   }
 
   try {
@@ -110,11 +154,7 @@ export default async function handler(req, res) {
           "Content-Type": "application/json",
           "X-GitHub-Api-Version": "2022-11-28",
         },
-        body: JSON.stringify({
-          title,
-          body,
-          labels: ["persona-feedback", type],
-        }),
+        body: JSON.stringify({ title, body, labels }),
       }
     );
 

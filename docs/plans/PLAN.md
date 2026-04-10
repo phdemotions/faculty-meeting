@@ -366,3 +366,26 @@ A `kellogg-marketeer` who specializes in B2B vs. consumer might eventually warra
 
 ### Future: Conversation Memory
 Personas could remember prior advisory sessions. This requires a `calibration/<persona-id>/` directory for per-session notes. Architecture is there; implementation is not.
+
+---
+
+## Infrastructure: Feedback Endpoint
+
+### What Exists
+A Vercel serverless function at `https://faculty-meeting.vercel.app/api/feedback` accepts persona feedback via POST and creates GitHub issues on `phdemotions/faculty-meeting`. Three-tier fallback: endpoint → `gh` CLI → local save with auto-drain. Anonymous researcher IDs (`~/.faculty-meeting/researcher-id`) correlate reports without identifying users.
+
+### ⚠️ HIGH PRIORITY: GitHub Token for Feedback Endpoint
+
+The Vercel endpoint uses a `GITHUB_TOKEN` environment variable to create issues via the GitHub API. **The current token is a `gh` CLI session token (`gho_*`) — these expire.**
+
+**Before users start filing feedback, you MUST:**
+
+1. Go to [github.com/settings/tokens](https://github.com/settings/tokens?type=beta) → **Fine-grained personal access tokens**
+2. Create a token scoped to **only** `phdemotions/faculty-meeting` with **Issues: Read & Write** permission
+3. Set expiration to 1 year (or no expiration if available)
+4. In the [Vercel dashboard](https://vercel.com/phdemotions/faculty-meeting/settings/environment-variables), replace the `GITHUB_TOKEN` value with the new token
+5. Redeploy: `vercel --prod` (env vars only take effect on new deployments)
+
+**Optional:** Set a `FEEDBACK_SECRET` env var in Vercel and add the `x-feedback-secret` header to the curl command in `report-issue/SKILL.md` to prevent abuse. Not urgent for launch — the endpoint only creates issues, not code changes.
+
+**Monitor:** Check the Vercel function logs periodically for 502 errors, which indicate the token has expired. Set a calendar reminder to rotate the token before its expiration date.

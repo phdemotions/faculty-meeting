@@ -1,8 +1,8 @@
 # Faculty Meeting — Status
 
 > **Last Updated:** 2026-04-10
-> **Phase:** Phase 1 — Architecture & Validation
-> **Build:** Phase 1 Complete
+> **Phase:** Phase 1 Complete + Feedback Infrastructure
+> **Build:** Clean — all systems deployed and verified
 
 ---
 
@@ -11,40 +11,51 @@
 | Attribute | Value |
 |-----------|-------|
 | **Version** | 0.1.0 |
-| **Build Status** | Phase 1 complete — 5 personas + 3 meta-skills + plugin distribution |
+| **Build Status** | Phase 1 complete + feedback endpoint live |
 | **Personas Built** | 5 of 40 (harvard-strategist, ceibs-navigator, gibs-pioneer, cbs-critical, herbert-simon) |
-| **Meta-Skills** | 3 (faculty-meeting, find-advisor, ai-methodologist) |
+| **Meta-Skills** | 4 (faculty-meeting, find-advisor, ai-methodologist, report-issue) |
 | **Distribution** | Plugin format (.claude-plugin) + legacy install.sh with auto-update |
-| **Open Issues** | P0: 0, P1: 3, P2: 1, P3: 0 |
-| **Stack** | Claude Code plugin (.md skills), YAML catalog, shell installer |
+| **Feedback Endpoint** | https://faculty-meeting.vercel.app/api/feedback — live, verified |
+| **Open Issues** | P0: 0, P1: 4, P2: 1, P3: 0 |
+| **Stack** | Claude Code plugin (.md skills), YAML catalog, shell installer, Vercel serverless |
 | **GitHub** | phdemotions/faculty-meeting (public) |
 
 ---
 
 ## What's Done
 
-### Phase 1: Architecture & Validation (Complete)
+### 2026-04-10 (Session 3) — Feedback Infrastructure + Privacy
 
-- [x] Created full directory structure (27 school + 5 tradition + 8 giant + 3 meta)
-- [x] Built `catalog.yaml` with all 40 personas (5 built, 35 planned)
-- [x] Built `harvard-strategist` — North America school persona
-- [x] Built `ceibs-navigator` — Asia-Pacific school persona
-- [x] Built `gibs-pioneer` — Africa school persona
-- [x] Built `cbs-critical` — Europe critical tradition persona
-- [x] Built `herbert-simon` — Historical giant persona
-- [x] Built `/faculty-meeting` meta-skill (orchestrator with sincere disagreement protocol)
-- [x] Built `/find-advisor` meta-skill (discovery and matching)
-- [x] Built `/ai-methodologist` meta-skill (skill auditor + AI research advisor)
-- [x] Added "In a Faculty Meeting" disagreement protocol to all personas
-- [x] Built personal advisor system (template + gitignored directory)
-- [x] Plugin distribution (`.claude-plugin/plugin.json` + `marketplace.json`)
-- [x] `install.sh` with Claude Code check, auto-update via `git pull`, version display
-- [x] Versioning (`VERSION`, `CHANGELOG.md`, git tags)
-- [x] `CLAUDE.md` for repo context
-- [x] `README.md` — grad-student friendly, prerequisites, plugin + manual install, full usage guide
-- [x] `CONTRIBUTING.md` + `docs/ADDING-A-PERSONA.md` (persona template with disagreement section)
-- [x] `docs/PHILOSOPHY.md` and `docs/ARCHITECTURE.md`
-- [x] Added LICENSE (MIT)
+- [x] Added feedback check to all 5 persona SKILL.md files (warm end-of-response prompt)
+- [x] Added feedback check to /faculty-meeting orchestrator (after synthesis)
+- [x] Rewrote /report-issue as conversational handler (researcher never invokes directly)
+- [x] Built Vercel feedback endpoint (api/feedback.js) — accepts POST, creates GitHub issues
+- [x] Three-tier fallback: endpoint → gh CLI → local save with auto-drain
+- [x] Anonymous researcher ID system (~/.faculty-meeting/researcher-id)
+- [x] Deployed to Vercel, connected GitHub repo for auto-deploys
+- [x] Created fine-grained GitHub PAT (Issues R/W only, scoped to phdemotions/faculty-meeting)
+- [x] Privacy-first issue template: ZERO researcher details, only advisor performance diagnostics
+- [x] Diagnostic-quality issues: severity, mode, question type (generic), how advisor failed, what tradition should have done, likely SKILL.md fix location
+- [x] Updated templates (ADDING-A-PERSONA.md, TEMPLATE.md) with feedback check
+- [x] Updated README feedback section (conversational, no /report-issue command shown)
+- [x] Added GitHub token rotation instructions to PLAN.md
+- [x] Convened faculty meeting on "Reading the Room" feature — consensus: build continuous calibration, not frustration detection
+- [x] Added `wrong-lens` issue type (CBS recommendation — researcher can report tradition mismatch, not just persona bugs)
+
+### 2026-04-10 (Session 2) — Phase 1 Polish
+
+- [x] Rewrote README for grad students (prerequisites, cost transparency, examples)
+- [x] Fixed Claude Code description (IDE + terminal, not terminal-only)
+- [x] Built /report-issue meta-skill (initial version)
+- [x] Audit fixes across all documentation
+
+### 2026-04-10 (Session 1) — Phase 1 Build
+
+- [x] Full directory structure, catalog.yaml (40 personas)
+- [x] 5 personas built with SKILL.md + tradition.md
+- [x] 3 meta-skills (faculty-meeting, find-advisor, ai-methodologist)
+- [x] Plugin distribution, install.sh, personal advisor system
+- [x] All documentation (README, CONTRIBUTING, ADDING-A-PERSONA, PHILOSOPHY, ARCHITECTURE)
 
 ---
 
@@ -58,6 +69,7 @@
 
 | Task | Priority |
 |------|----------|
+| Build continuous advisory calibration ("Reading the Room" — not frustration detection) | P1 |
 | Phase 2: Build ~15 core personas (NA, EU, APAC, LATAM, traditions, giants) | P1 |
 | Test /faculty-meeting with 3-4 diverse compositions | P1 |
 | Test /ai-methodologist audit on built personas | P1 |
@@ -71,5 +83,6 @@
 
 | Date | Summary |
 |------|---------|
-| 2026-04-10 | Phase 1 complete — 5 personas, 3 meta-skills, plugin distribution, personal advisors, sincere disagreement protocol, grad-student docs, versioning, CLAUDE.md |
-| 2026-04-10 | Project inception — designed 40-persona roster, architecture, and 4-phase build plan |
+| 2026-04-10 | Session 3: Feedback infrastructure — Vercel endpoint, privacy-first diagnostics, three-tier fallback, faculty meeting on frustration detection |
+| 2026-04-10 | Session 2: README rewrite, /report-issue, audit fixes |
+| 2026-04-10 | Session 1: Phase 1 complete — 5 personas, 3 meta-skills, plugin distribution, personal advisors |

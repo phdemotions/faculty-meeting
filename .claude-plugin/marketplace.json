@@ -1,0 +1,13 @@
+{
+  "name": "phdemotions-faculty-meeting",
+  "owner": {
+    "name": "phdemotions"
+  },
+  "plugins": [
+    {
+      "name": "faculty-meeting",
+      "source": ".",
+      "description": "Research advisor personas from 40 global intellectual traditions. Convene panels for productive disagreement about your research questions."
+    }
+  ]
+}

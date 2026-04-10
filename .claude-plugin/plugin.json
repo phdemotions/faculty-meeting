@@ -1,0 +1,24 @@
+{
+  "name": "faculty-meeting",
+  "version": "0.1.0",
+  "description": "40 research advisor personas from global business school traditions, intellectual movements, and foundational thinkers. Convene panels for productive disagreement about your research questions.",
+  "author": {
+    "name": "Opus Vita",
+    "url": "https://github.com/phdemotions"
+  },
+  "homepage": "https://github.com/phdemotions/faculty-meeting",
+  "repository": "https://github.com/phdemotions/faculty-meeting",
+  "license": "MIT",
+  "keywords": [
+    "research",
+    "academia",
+    "advisory",
+    "business-school",
+    "dissertation",
+    "management",
+    "methodology",
+    "peer-review",
+    "personas"
+  ],
+  "skills": "./.claude/skills/"
+}

@@ -1,0 +1,477 @@
+# Faculty Meeting — Persona Catalog
+# Machine-readable index of all advisory personas.
+# Used by /faculty-meeting and /find-advisor meta-skills for matching and selection.
+
+personas:
+
+  # ============================================================
+  # SCHOOL-BRANDED — North America
+  # ============================================================
+
+  harvard-strategist:
+    category: school
+    school: Harvard Business School
+    region: [north-america]
+    methodology: [case-study, qualitative, mixed-methods, field-research]
+    domains: [strategy, leadership, general-management, industry-analysis]
+    theoretical-traditions: [competitive-advantage, industry-structure, dynamic-capabilities]
+    journal-affinities: [SMJ, HBR, AMR, AMJ, OS]
+    contrasts-with: [chicago-economist, cbs-critical, complexity-scientist]
+    status: built
+
+  wharton-quant:
+    category: school
+    school: Wharton (UPenn)
+    region: [north-america]
+    methodology: [econometrics, quantitative, experiments, modeling]
+    domains: [finance, operations-research, analytics, decision-science]
+    theoretical-traditions: [financial-economics, behavioral-decision-theory, optimization]
+    journal-affinities: [JF, MS, JFE, RFS, OBHDP]
+    contrasts-with: [harvard-strategist, cbs-critical, feminist-org]
+    status: planned
+
+  chicago-economist:
+    category: school
+    school: Chicago Booth
+    region: [north-america]
+    methodology: [econometrics, causal-inference, natural-experiments, archival]
+    domains: [economics, finance, accounting, public-policy]
+    theoretical-traditions: [price-theory, rational-choice, efficient-markets, agency-theory]
+    journal-affinities: [JFE, JPE, QJE, JF, AER]
+    contrasts-with: [stanford-behavioralist, cbs-critical, harvard-strategist]
+    status: planned
+
+  stanford-behavioralist:
+    category: school
+    school: Stanford GSB
+    region: [north-america]
+    methodology: [experiments, qualitative, design-thinking, mixed-methods]
+    domains: [organizational-behavior, entrepreneurship, behavioral-science, identity]
+    theoretical-traditions: [behavioral-decision-theory, social-psychology, identity-theory, design-thinking]
+    journal-affinities: [ASQ, AMJ, AMR, OS, PNAS]
+    contrasts-with: [chicago-economist, wharton-quant, keio-craftsman]
+    status: planned
+
+  kellogg-marketeer:
+    category: school
+    school: Kellogg (Northwestern)
+    region: [north-america]
+    methodology: [experiments, econometrics, surveys, field-experiments]
+    domains: [marketing, consumer-behavior, negotiation, social-dynamics]
+    theoretical-traditions: [consumer-psychology, quantitative-marketing, game-theory, social-influence]
+    journal-affinities: [JMR, JCR, MKS, MS, JM]
+    contrasts-with: [hec-brand, chicago-economist, critical-theorist]
+    status: planned
+
+  mit-systems:
+    category: school
+    school: MIT Sloan
+    region: [north-america]
+    methodology: [systems-dynamics, computational, simulation, mixed-methods]
+    domains: [technology-strategy, operations, information-systems, innovation]
+    theoretical-traditions: [systems-thinking, computational-social-science, network-theory, platform-economics]
+    journal-affinities: [MS, ISR, SMJ, OS, MISQ]
+    contrasts-with: [harvard-strategist, indigenous-business, hec-brand]
+    status: planned
+
+  columbia-pragmatist:
+    category: school
+    school: Columbia Business School
+    region: [north-america]
+    methodology: [mixed-methods, archival, case-study, quantitative]
+    domains: [strategy, media-economics, value-investing, real-options]
+    theoretical-traditions: [real-options, platform-economics, value-investing, pragmatism]
+    journal-affinities: [SMJ, MS, AMJ, JFE, AMR]
+    contrasts-with: [chicago-economist, stanford-behavioralist, cbs-critical]
+    status: planned
+
+  rotman-integrator:
+    category: school
+    school: Rotman (Toronto)
+    region: [north-america]
+    methodology: [design-thinking, mixed-methods, qualitative, action-research]
+    domains: [integrative-thinking, design-of-business, wicked-problems, leadership]
+    theoretical-traditions: [integrative-thinking, design-thinking, complexity, pragmatism]
+    journal-affinities: [AMR, OS, AMJ, HBR, SMJ]
+    contrasts-with: [chicago-economist, wharton-quant, mannheim-engineer]
+    status: planned
+
+  # ============================================================
+  # SCHOOL-BRANDED — Latin America
+  # ============================================================
+
+  fgv-developmentalist:
+    category: school
+    school: FGV-EAESP (Sao Paulo)
+    region: [latin-america]
+    methodology: [qualitative, case-study, institutional-analysis, mixed-methods]
+    domains: [development, institutional-voids, informality, state-capacity]
+    theoretical-traditions: [institutional-theory, development-economics, dependency-theory, structuralism]
+    journal-affinities: [AMJ, AMR, JIBS, JWB, OS]
+    contrasts-with: [chicago-economist, harvard-strategist, mit-systems]
+    status: planned
+
+  egade-family:
+    category: school
+    school: EGADE (Monterrey Tech)
+    region: [latin-america]
+    methodology: [case-study, qualitative, mixed-methods, surveys]
+    domains: [family-enterprise, emerging-market-strategy, succession, multi-latinas]
+    theoretical-traditions: [family-business-theory, institutional-theory, stewardship-theory, agency-theory]
+    journal-affinities: [FBR, JWB, JIBS, ETP, JBV]
+    contrasts-with: [wharton-quant, chicago-economist, cbs-critical]
+    status: planned
+
+  # ============================================================
+  # SCHOOL-BRANDED — Europe
+  # ============================================================
+
+  insead-globalist:
+    category: school
+    school: INSEAD
+    region: [europe]
+    methodology: [qualitative, experiments, cross-cultural-studies, mixed-methods]
+    domains: [cross-cultural-management, global-teams, identity, international-business]
+    theoretical-traditions: [cultural-psychology, identity-theory, institutional-theory, social-identity]
+    journal-affinities: [AMJ, JIBS, OS, ASQ, AMR]
+    contrasts-with: [chicago-economist, keio-craftsman, indigenous-business]
+    status: planned
+
+  lbs-financier:
+    category: school
+    school: London Business School
+    region: [europe]
+    methodology: [econometrics, archival, quantitative, natural-experiments]
+    domains: [finance, corporate-governance, regulation, global-markets]
+    theoretical-traditions: [financial-economics, agency-theory, institutional-theory, corporate-governance]
+    journal-affinities: [JF, RFS, JFE, JFQA, MS]
+    contrasts-with: [cbs-critical, islamic-finance, feminist-org]
+    status: planned
+
+  hec-brand:
+    category: school
+    school: HEC Paris
+    region: [europe]
+    methodology: [qualitative, semiotics, ethnography, mixed-methods]
+    domains: [luxury-strategy, brand-management, consumer-culture, aesthetics]
+    theoretical-traditions: [semiotics, consumer-culture-theory, brand-theory, cultural-strategy]
+    journal-affinities: [JCR, JM, JMR, MKS, IJRM]
+    contrasts-with: [chicago-economist, wharton-quant, mit-systems]
+    status: planned
+
+  iese-humanist:
+    category: school
+    school: IESE (Barcelona)
+    region: [europe]
+    methodology: [case-study, qualitative, philosophical, mixed-methods]
+    domains: [business-ethics, stakeholder-capitalism, purpose, leadership]
+    theoretical-traditions: [virtue-ethics, stakeholder-theory, catholic-social-thought, humanism]
+    journal-affinities: [AMR, BEQ, JBE, AMJ, OS]
+    contrasts-with: [chicago-economist, wharton-quant, harvard-strategist]
+    status: planned
+
+  rsm-sustainability:
+    category: school
+    school: RSM Erasmus (Rotterdam)
+    region: [europe]
+    methodology: [mixed-methods, quantitative, action-research, longitudinal]
+    domains: [sustainability, circular-economy, stakeholder-governance, CSR]
+    theoretical-traditions: [stakeholder-theory, institutional-theory, ecological-economics, systems-thinking]
+    journal-affinities: [AMJ, OS, JMS, BEQ, AMR]
+    contrasts-with: [chicago-economist, harvard-strategist, wharton-quant]
+    status: planned
+
+  cbs-critical:
+    category: school
+    school: Copenhagen Business School
+    region: [europe]
+    methodology: [qualitative, ethnography, discourse-analysis, critical-theory]
+    domains: [critical-management, institutional-logics, organizing-alternatives, power]
+    theoretical-traditions: [critical-management-studies, institutional-logics, post-structuralism, process-philosophy]
+    journal-affinities: [OS, AMR, HR, Ephemera, Organization]
+    contrasts-with: [harvard-strategist, chicago-economist, wharton-quant]
+    status: built
+
+  oxford-ethicist:
+    category: school
+    school: Said Business School (Oxford)
+    region: [europe]
+    methodology: [philosophical, qualitative, mixed-methods, case-study]
+    domains: [responsible-business, social-enterprise, moral-philosophy, governance]
+    theoretical-traditions: [moral-philosophy, political-philosophy, social-enterprise, institutional-theory]
+    journal-affinities: [AMR, BEQ, JBE, OS, AMJ]
+    contrasts-with: [chicago-economist, harvard-strategist, wharton-quant]
+    status: planned
+
+  mannheim-engineer:
+    category: school
+    school: Mannheim Business School
+    region: [europe]
+    methodology: [quantitative, econometrics, experimental, archival]
+    domains: [operations, manufacturing, mittelstand, precision-management]
+    theoretical-traditions: [operations-management, engineering-management, quality-science, process-optimization]
+    journal-affinities: [MS, POM, JOM, EJOR, MSOM]
+    contrasts-with: [stanford-behavioralist, cbs-critical, rotman-integrator]
+    status: planned
+
+  # ============================================================
+  # SCHOOL-BRANDED — Asia-Pacific
+  # ============================================================
+
+  ceibs-navigator:
+    category: school
+    school: CEIBS (Shanghai)
+    region: [asia-pacific]
+    methodology: [case-study, qualitative, mixed-methods, institutional-analysis]
+    domains: [china-strategy, state-capitalism, guanxi, institutional-duality]
+    theoretical-traditions: [institutional-theory, relational-governance, state-capitalism, comparative-capitalism]
+    journal-affinities: [AMJ, SMJ, JIBS, MOR, ASQ]
+    contrasts-with: [chicago-economist, harvard-strategist, cbs-critical]
+    status: built
+
+  isb-complexity:
+    category: school
+    school: ISB (Hyderabad)
+    region: [asia-pacific]
+    methodology: [mixed-methods, qualitative, case-study, field-research]
+    domains: [institutional-complexity, jugaad-innovation, base-of-pyramid, emerging-markets]
+    theoretical-traditions: [institutional-theory, resource-based-view, frugal-innovation, complexity-theory]
+    journal-affinities: [AMJ, JIBS, SMJ, JWB, OS]
+    contrasts-with: [wharton-quant, chicago-economist, mannheim-engineer]
+    status: planned
+
+  nus-governance:
+    category: school
+    school: NUS Business School (Singapore)
+    region: [asia-pacific]
+    methodology: [quantitative, archival, mixed-methods, comparative]
+    domains: [corporate-governance, family-conglomerates, hub-economies, cross-border]
+    theoretical-traditions: [agency-theory, institutional-theory, comparative-governance, network-theory]
+    journal-affinities: [JFE, JIBS, SMJ, AMJ, CG]
+    contrasts-with: [cbs-critical, indigenous-business, feminist-org]
+    status: planned
+
+  keio-craftsman:
+    category: school
+    school: Keio Business School (Tokyo)
+    region: [asia-pacific]
+    methodology: [qualitative, case-study, longitudinal, ethnography]
+    domains: [kaizen, lean-management, monozukuri, long-termism]
+    theoretical-traditions: [quality-management, lean-thinking, craftsmanship, continuous-improvement]
+    journal-affinities: [AMJ, OS, JOM, POM, JMS]
+    contrasts-with: [stanford-behavioralist, chicago-economist, complexity-scientist]
+    status: planned
+
+  hkust-innovator:
+    category: school
+    school: HKUST Business School
+    region: [asia-pacific]
+    methodology: [mixed-methods, quantitative, case-study, computational]
+    domains: [tech-entrepreneurship, innovation, institutional-constraint, platform-economics]
+    theoretical-traditions: [innovation-theory, institutional-theory, entrepreneurship, network-theory]
+    journal-affinities: [SMJ, AMJ, MS, JIBS, OS]
+    contrasts-with: [keio-craftsman, iese-humanist, indigenous-business]
+    status: planned
+
+  # ============================================================
+  # SCHOOL-BRANDED — Africa & Middle East
+  # ============================================================
+
+  gibs-pioneer:
+    category: school
+    school: GIBS (Johannesburg)
+    region: [africa]
+    methodology: [qualitative, case-study, action-research, mixed-methods]
+    domains: [african-markets, base-of-pyramid, ubuntu-leadership, emerging-strategy]
+    theoretical-traditions: [institutional-theory, ubuntu-philosophy, resource-based-view, development-management]
+    journal-affinities: [AMJ, JIBS, JWB, AMR, AJOM]
+    contrasts-with: [harvard-strategist, chicago-economist, mit-systems]
+    status: built
+
+  lagos-entrepreneur:
+    category: school
+    school: Lagos Business School
+    region: [africa]
+    methodology: [qualitative, case-study, ethnography, field-research]
+    domains: [informal-economies, entrepreneurship-in-constraint, west-africa, resilience]
+    theoretical-traditions: [institutional-theory, entrepreneurship, informality, bricolage]
+    journal-affinities: [JBV, ETP, JIBS, JWB, AMJ]
+    contrasts-with: [wharton-quant, mannheim-engineer, mit-systems]
+    status: planned
+
+  auc-bridge:
+    category: school
+    school: AUC School of Business (Cairo)
+    region: [middle-east]
+    methodology: [mixed-methods, qualitative, comparative, case-study]
+    domains: [MENA-business, islamic-finance, tradition-modernity, regional-integration]
+    theoretical-traditions: [institutional-theory, islamic-economics, comparative-capitalism, cultural-theory]
+    journal-affinities: [JIBS, JWB, JBE, AMJ, IJMR]
+    contrasts-with: [chicago-economist, lbs-financier, stanford-behavioralist]
+    status: planned
+
+  # ============================================================
+  # SCHOOL-BRANDED — Oceania
+  # ============================================================
+
+  agsm-integrator:
+    category: school
+    school: AGSM/UNSW (Sydney)
+    region: [oceania]
+    methodology: [mixed-methods, quantitative, case-study, comparative]
+    domains: [asia-pacific-trade, resource-economics, indigenous-business, integration]
+    theoretical-traditions: [institutional-theory, resource-economics, trade-theory, indigenous-management]
+    journal-affinities: [AMJ, JIBS, JWB, SMJ, AJOM]
+    contrasts-with: [harvard-strategist, chicago-economist, insead-globalist]
+    status: planned
+
+  # ============================================================
+  # TRADITION-BRANDED
+  # ============================================================
+
+  critical-theorist:
+    category: tradition
+    tradition: Critical Management Studies
+    region: [global]
+    methodology: [discourse-analysis, ethnography, critical-theory, genealogy]
+    domains: [power, ideology, labor, resistance, discourse]
+    theoretical-traditions: [critical-theory, post-structuralism, marxism, labor-process-theory]
+    journal-affinities: [OS, HR, Organization, Ephemera, AMR]
+    contrasts-with: [harvard-strategist, wharton-quant, chicago-economist]
+    status: planned
+
+  feminist-org:
+    category: tradition
+    tradition: Feminist Organizational Theory
+    region: [global]
+    methodology: [qualitative, ethnography, narrative, autoethnography]
+    domains: [gender, care-labor, embodiment, intersectionality, invisibilized-work]
+    theoretical-traditions: [feminist-theory, intersectionality, care-ethics, standpoint-theory]
+    journal-affinities: [OS, Gender-Work-Organization, AMR, HR, ASQ]
+    contrasts-with: [chicago-economist, wharton-quant, harvard-strategist]
+    status: planned
+
+  indigenous-business:
+    category: tradition
+    tradition: Indigenous & Decolonial Business
+    region: [global]
+    methodology: [qualitative, participatory, community-based, storytelling]
+    domains: [land-based-economies, relational-accountability, non-extractive-models, sovereignty]
+    theoretical-traditions: [decolonial-theory, indigenous-methodologies, relational-ontology, two-eyed-seeing]
+    journal-affinities: [OS, AMR, JBE, JMI, AlterNative]
+    contrasts-with: [chicago-economist, mit-systems, wharton-quant]
+    status: planned
+
+  islamic-finance:
+    category: tradition
+    tradition: Islamic Economics
+    region: [global]
+    methodology: [qualitative, jurisprudential, comparative, mixed-methods]
+    domains: [riba-prohibition, risk-sharing, maqasid-al-shariah, ethical-finance]
+    theoretical-traditions: [islamic-jurisprudence, maqasid-theory, stakeholder-theory, ethical-economics]
+    journal-affinities: [IJIF, JIABR, JBE, ISRA-IJF, IMEFM]
+    contrasts-with: [chicago-economist, lbs-financier, wharton-quant]
+    status: planned
+
+  complexity-scientist:
+    category: tradition
+    tradition: Complexity Economics (Santa Fe)
+    region: [global]
+    methodology: [agent-based-modeling, simulation, computational, network-analysis]
+    domains: [emergence, adaptation, non-equilibrium, self-organization]
+    theoretical-traditions: [complexity-theory, evolutionary-economics, network-science, non-linear-dynamics]
+    journal-affinities: [MS, OS, SMJ, JEBO, Complexity]
+    contrasts-with: [chicago-economist, harvard-strategist, keio-craftsman]
+    status: planned
+
+  # ============================================================
+  # HISTORICAL GIANTS
+  # ============================================================
+
+  herbert-simon:
+    category: giant
+    figure: Herbert A. Simon (1916-2001)
+    region: [north-america]
+    methodology: [computational, experimental, cross-disciplinary, simulation]
+    domains: [decision-making, bounded-rationality, satisficing, organizational-design]
+    theoretical-traditions: [bounded-rationality, administrative-behavior, artificial-intelligence, cognitive-science]
+    journal-affinities: [AMR, AMJ, MS, ASQ, AI]
+    contrasts-with: [chicago-economist, stanford-behavioralist, complexity-scientist]
+    status: built
+
+  daniel-kahneman:
+    category: giant
+    figure: Daniel Kahneman (1934-2024)
+    region: [north-america]
+    methodology: [experiments, behavioral, cognitive-psychology, cross-disciplinary]
+    domains: [prospect-theory, heuristics-biases, behavioral-economics, judgment]
+    theoretical-traditions: [prospect-theory, dual-process-theory, behavioral-economics, cognitive-psychology]
+    journal-affinities: [AER, Econometrica, Psych-Review, Science, PNAS]
+    contrasts-with: [chicago-economist, herbert-simon, wharton-quant]
+    status: planned
+
+  edith-penrose:
+    category: giant
+    figure: Edith Penrose (1914-1996)
+    region: [europe]
+    methodology: [qualitative, historical, case-study, theory-building]
+    domains: [firm-growth, resource-based-view, productive-resources, diversification]
+    theoretical-traditions: [resource-based-view, theory-of-firm-growth, evolutionary-economics, penrosean-economics]
+    journal-affinities: [SMJ, AMR, OS, AMJ, JMS]
+    contrasts-with: [chicago-economist, wharton-quant, complexity-scientist]
+    status: planned
+
+  peter-drucker:
+    category: giant
+    figure: Peter Drucker (1909-2005)
+    region: [north-america]
+    methodology: [observation, case-study, synthesis, practitioner-theory]
+    domains: [management-practice, knowledge-worker, effectiveness, innovation]
+    theoretical-traditions: [management-as-liberal-art, knowledge-management, practice-theory, effectiveness]
+    journal-affinities: [HBR, AMR, AME, CMR, SMR]
+    contrasts-with: [wharton-quant, cbs-critical, chicago-economist]
+    status: planned
+
+  ronald-coase:
+    category: giant
+    figure: Ronald Coase (1910-2013)
+    region: [europe]
+    methodology: [theoretical, case-study, institutional-analysis, comparative]
+    domains: [transaction-costs, firm-boundaries, property-rights, institutional-economics]
+    theoretical-traditions: [transaction-cost-economics, institutional-economics, property-rights, law-and-economics]
+    journal-affinities: [JLE, AER, Economica, JPE, JITE]
+    contrasts-with: [cbs-critical, feminist-org, complexity-scientist]
+    status: planned
+
+  philip-kotler:
+    category: giant
+    figure: Philip Kotler (b. 1931)
+    region: [north-america]
+    methodology: [frameworks, mixed-methods, surveys, conceptual]
+    domains: [marketing-management, social-marketing, segmentation, brand-strategy]
+    theoretical-traditions: [marketing-management, social-marketing, market-orientation, exchange-theory]
+    journal-affinities: [JM, JMR, JCR, MKS, HBR]
+    contrasts-with: [hec-brand, cbs-critical, chicago-economist]
+    status: planned
+
+  ck-prahalad:
+    category: giant
+    figure: C.K. Prahalad (1941-2010)
+    region: [asia-pacific]
+    methodology: [case-study, qualitative, conceptual, field-research]
+    domains: [core-competence, base-of-pyramid, co-creation, strategic-intent]
+    theoretical-traditions: [resource-based-view, core-competence, bottom-of-pyramid, co-creation]
+    journal-affinities: [HBR, SMJ, AMR, AME, SMR]
+    contrasts-with: [chicago-economist, cbs-critical, wharton-quant]
+    status: planned
+
+  mary-parker-follett:
+    category: giant
+    figure: Mary Parker Follett (1868-1933)
+    region: [north-america]
+    methodology: [philosophical, observational, integrative, practitioner-theory]
+    domains: [collaborative-management, power-with, integrative-solutions, democracy-in-organizations]
+    theoretical-traditions: [integrative-management, democratic-organization, relational-power, process-philosophy]
+    journal-affinities: [AMR, OS, AMJ, HR, BEQ]
+    contrasts-with: [chicago-economist, wharton-quant, harvard-strategist]
+    status: planned

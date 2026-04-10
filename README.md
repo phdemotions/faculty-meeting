@@ -67,13 +67,16 @@ Top matches:
 
 ## What You Need
 
-Faculty Meeting is a plugin for **[Claude Code](https://docs.anthropic.com/en/docs/claude-code)** — an AI assistant made by Anthropic that you interact with by typing natural language. Think of it like ChatGPT, but it runs in your computer's terminal and can read your files, search the web, and use specialized tools.
+Faculty Meeting is a plugin for **[Claude Code](https://docs.anthropic.com/en/docs/claude-code)** — an AI assistant made by Anthropic that you interact with by typing natural language. It can read your files, search the web, and use specialized tools like Faculty Meeting's advisor personas.
+
+Claude Code runs in two ways — pick whichever you prefer:
+- **The Claude Code IDE** — A desktop app where you chat with Claude alongside your project files
+- **The terminal** — A command-line interface for those comfortable with a terminal
 
 **To get started you need:**
 
 1. **Claude Code** — Install it by following [Anthropic's setup guide](https://docs.anthropic.com/en/docs/claude-code/getting-started). It takes about 5 minutes.
 2. **A Claude subscription** — Claude Code requires a [Max plan](https://claude.ai) (~$100/month) or API credits. There is no free tier for Claude Code.
-3. **A terminal** — On Mac, open the built-in Terminal app. On Windows, use PowerShell or Windows Terminal.
 
 > **On cost:** We know $100/month is real money on a grad student stipend. If you're evaluating whether it's worth it: Claude Code is useful far beyond Faculty Meeting — it can help with literature searches, data analysis, writing, and coding. Faculty Meeting is one of many things it can do. Some universities provide institutional access — check with your IT department.
 

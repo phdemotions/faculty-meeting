@@ -70,7 +70,7 @@ Try each method in order. Stop at the first one that works.
 #### Method 1: Feedback Endpoint (preferred — works without any tools)
 
 ```bash
-curl -s -X POST https://faculty-meeting-feedback.vercel.app/api/feedback \
+curl -s -X POST https://faculty-meeting.vercel.app/api/feedback \
   -H "Content-Type: application/json" \
   -d '{
     "persona": "{persona-name}",

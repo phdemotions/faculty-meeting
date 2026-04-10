@@ -1,264 +1,184 @@
 # Faculty Meeting
 
-**Get research feedback from 40 different intellectual traditions — without leaving your terminal.**
+**Your dissertation committee only sees your work through one lens. What if you could hear from forty?**
 
-You're a grad student or researcher. You have one advisor, maybe a small committee, and they all come from roughly the same tradition. Faculty Meeting gives you a panel of advisors from Harvard, CEIBS, Copenhagen, GIBS, the behavioral tradition, the critical tradition, the complexity tradition — each one arguing sincerely from their own perspective about *your* research question.
+Faculty Meeting gives you a panel of research advisors drawn from the world's major intellectual traditions — Harvard's case-method strategists, Copenhagen's critical theorists, GIBS's African management scholars, CEIBS's China-strategy navigators, and foundational thinkers like Herbert Simon. Each one reads your research question and responds from their tradition, with their frameworks, their standards, and their honest blind spots.
 
-The point is **productive disagreement.** These advisors don't politely agree. They argue. They push back on each other's assumptions. They name their own blind spots. The friction is where the insight lives.
+The point is **productive disagreement.** These advisors don't politely agree with each other. They argue. A Harvard strategist says "show me the competitive dynamics"; a Copenhagen critical scholar responds "whose interests does that framing serve?"; a GIBS pioneer asks "does your theory survive contact with a context where those institutions don't exist?" The friction between them is where the insight lives.
 
-## What It Looks Like
+You — the researcher — hear all sides and decide.
 
-Ask a single advisor:
+## What You Get
 
-```
-/harvard-strategist What's the competitive dynamics story in my study of hospital M&A?
-```
+You type a research question. Here's what comes back.
 
-Or convene a panel that will argue about your question:
+**Ask a single advisor** and get feedback in their tradition's voice:
 
 ```
-/faculty-meeting How should I study platform governance in Southeast Asian gig economies?
+You:  /harvard-strategist What's the competitive dynamics story in my study of hospital M&A?
+
+HBS:  Assessment: You have a clear empirical setting but you're underspecifying the unit
+      of analysis. Are you studying the acquiring firm's strategy, the target's vulnerability,
+      or the industry dynamics that make consolidation attractive? These are different questions
+      with different theoretical homes...
+
+      Key Questions:
+      1. What does the value chain look like in this market, and where does M&A change it?
+      2. Are you tracking competitive response from non-acquiring rivals?
+      ...
 ```
 
-Or find which advisors fit your question best:
+**Convene a faculty meeting** and get 3–5 advisors arguing about your question:
 
 ```
-/find-advisor I'm studying family business succession in Mexican multinationals using interview data
+You:  /faculty-meeting Should I use institutional theory or resource-based view
+      to study SOE reform in Vietnam?
+
+Panel: harvard-strategist, ceibs-navigator, cbs-critical
+
+[Each advisor gives their full assessment in their own voice, then:]
+
+Synthesis:
+  Where they agree: All three insist you cannot study SOE reform without
+  specifying the state's role — it is not "context," it is the phenomenon.
+
+  Where they diverge: Harvard frames this as competitive repositioning under
+  institutional change. CEIBS argues the institutional duality (market logic +
+  state logic) IS the research question, not background. CBS asks whose interests
+  "reform" serves and whether the word itself smuggles in a neoliberal assumption.
+
+  Productive tension: The disagreement between CEIBS and CBS is the most
+  generative — is "institutional navigation" a neutral description or a
+  euphemism for elite capture?
 ```
 
-Or ask about AI in your research, or audit any skill to keep it current:
+**Find the right advisor** when you're not sure who to ask:
 
 ```
-/ai-methodologist Should I use LLMs to help code my qualitative interview data?
+You:  /find-advisor I'm studying family business succession in Mexican multinationals
+
+Top matches:
+  1. egade-family — EGADE (Monterrey Tech). Specializes in exactly this: Latin American
+     family enterprises, multi-Latinas, succession dynamics. [Planned — not yet available]
+  2. harvard-strategist — Would frame succession as a general management and governance
+     question. Strong on the strategic implications, weaker on family dynamics.
+  ...
 ```
 
-```
-/ai-methodologist harvard-strategist
-```
+## What You Need
 
-## Prerequisites
+Faculty Meeting is a plugin for **[Claude Code](https://docs.anthropic.com/en/docs/claude-code)** — an AI assistant made by Anthropic that you interact with by typing natural language. Think of it like ChatGPT, but it runs in your computer's terminal and can read your files, search the web, and use specialized tools.
 
-Faculty Meeting runs inside **[Claude Code](https://docs.anthropic.com/en/docs/claude-code)** — Anthropic's AI coding agent that runs in your terminal. You need:
+**To get started you need:**
 
-1. **Claude Code installed.** Follow the [official install guide](https://docs.anthropic.com/en/docs/claude-code/getting-started). It's a CLI tool — you run it in your terminal.
-2. **A Claude account with access to Claude Code.** Claude Code requires a Max plan or API credits.
-3. **Basic terminal comfort.** You'll run a few commands to install, but after that everything happens through natural language.
+1. **Claude Code** — Install it by following [Anthropic's setup guide](https://docs.anthropic.com/en/docs/claude-code/getting-started). It takes about 5 minutes.
+2. **A Claude subscription** — Claude Code requires a [Max plan](https://claude.ai) (~$100/month) or API credits. There is no free tier for Claude Code.
+3. **A terminal** — On Mac, open the built-in Terminal app. On Windows, use PowerShell or Windows Terminal.
 
-If you've never used Claude Code before: it's an AI assistant that lives in your terminal. You type natural language, it responds. Faculty Meeting adds slash commands (like `/faculty-meeting`) that invoke specific advisor personas.
+> **On cost:** We know $100/month is real money on a grad student stipend. If you're evaluating whether it's worth it: Claude Code is useful far beyond Faculty Meeting — it can help with literature searches, data analysis, writing, and coding. Faculty Meeting is one of many things it can do. Some universities provide institutional access — check with your IT department.
 
 ## Install
 
 ### Option A: Plugin (recommended — auto-updates)
 
-In any Claude Code session:
+Once Claude Code is running, type:
 
 ```
 /plugin marketplace add phdemotions/faculty-meeting
 /plugin install faculty-meeting
 ```
 
-That's it. Skills are available immediately and update automatically when we push new personas or improvements.
+That's it. The advisors are available immediately, and you'll automatically get new personas and improvements as we release them.
 
-### Option B: Manual (git clone)
+### Option B: Manual
+
+If you prefer to manage updates yourself:
 
 ```bash
 git clone https://github.com/phdemotions/faculty-meeting.git
 cd faculty-meeting
-chmod +x install.sh
 ./install.sh
 ```
 
-The install script symlinks skills into Claude Code's directory and auto-pulls the latest version each time you run it. Re-run `./install.sh` anytime to get updates.
+The install script checks for updates automatically each time you run it.
 
-## How to Use It
+## Available Advisors
 
-### Ask a specific advisor
+### Ready to Use Now
 
-Each advisor is a slash command. Type `/` followed by their ID and your question:
+| Command | Tradition | What They Bring |
+|---------|-----------|-----------------|
+| `/harvard-strategist` | Harvard Business School | Case method reasoning, industry analysis, competitive strategy. Asks "show me the firm, show me the industry." |
+| `/ceibs-navigator` | CEIBS (Shanghai) | China's state-capitalism interface, institutional duality, guanxi. Stress-tests Western frameworks against Chinese evidence. |
+| `/gibs-pioneer` | GIBS (Johannesburg) | African emerging markets, Ubuntu leadership, base-of-pyramid strategy. Challenges deficit framing, centers African agency. |
+| `/cbs-critical` | Copenhagen Business School | Critical management studies, institutional logics, power. Asks "whose interests does this framing serve?" |
+| `/herbert-simon` | Historical Giant | Bounded rationality, satisficing, organizational design. Asks "are you assuming optimization? What if actors satisfice instead?" |
 
-```
-/cbs-critical Review the power assumptions in my draft on algorithmic management
-```
+### Meta-Tools
 
-```
-/herbert-simon Is my decision-making model assuming too much rationality?
-```
+| Command | What It Does |
+|---------|--------------|
+| `/faculty-meeting` | Picks 3–5 advisors who will disagree productively about your question. You can also choose the panel: `/faculty-meeting --with harvard-strategist,cbs-critical,gibs-pioneer` |
+| `/find-advisor` | Describes your question and returns a ranked list of the best-fit advisors with explanations. |
+| `/ai-methodologist` | The faculty member who never stops reading. Advises on AI in your research (LLMs for lit review, AI disclosure norms, what your committee expects). Can also audit any advisor for staleness. |
 
-```
-/gibs-pioneer What does base-of-pyramid strategy actually look like in my South African fintech study?
-```
+### 35 More Coming
 
-The advisor responds in their tradition's voice — with their framework, their questions, their blind spots.
-
-### Convene a faculty meeting
-
-`/faculty-meeting` auto-selects 3–5 advisors who will **productively disagree** about your question:
-
-```
-/faculty-meeting Should I use institutional theory or resource-based view to study SOE reform in Vietnam?
-```
-
-It picks advisors for maximum tension (not consensus), generates each perspective in their authentic voice, then synthesizes where they agree, where they diverge, and what new questions emerge.
-
-You can also pick the panel yourself:
-
-```
-/faculty-meeting --with harvard-strategist,cbs-critical,gibs-pioneer
-```
-
-### Discover the right advisor
-
-Not sure who to ask? `/find-advisor` matches your question to the best-fit personas:
-
-```
-/find-advisor I'm doing a qualitative study of how Nigerian tech startups navigate regulatory uncertainty
-```
-
-It returns a ranked list with explanations and suggests a panel composition for `/faculty-meeting`.
-
-### Keep skills current
-
-`/ai-methodologist` is the faculty member who never stops reading. Point it at any skill to get an audit and modernization recommendations:
-
-```
-/ai-methodologist ceibs-navigator
-```
-
-It checks current best practices for Claude Code skills, recent developments in the advisor's intellectual tradition, and whether the skill's voice and content have gone stale. It can also advise on AI in your research — whether to use LLMs for coding, how to disclose AI assistance, what your committee will expect.
-
-## The Roster
-
-### Currently Available
-
-These advisors and meta-skills are built and ready to use:
-
-| ID | Tradition | Lens |
-|----|-----------|------|
-| `harvard-strategist` | Harvard Business School | Case method, industry analysis, competitive strategy |
-| `ceibs-navigator` | CEIBS (Shanghai) | China state-capitalism, guanxi, institutional duality |
-| `gibs-pioneer` | GIBS (Johannesburg) | African markets, Ubuntu leadership, BOP strategy |
-| `cbs-critical` | Copenhagen Business School | Critical management, institutional logics, power |
-| `herbert-simon` | Historical Giant | Bounded rationality, satisficing, organizational design |
-
-**Meta-skills:**
-
-| ID | Purpose |
-|----|---------|
-| `/faculty-meeting` | Convene a panel of 3–5 advisors for productive disagreement |
-| `/find-advisor` | Discover which advisors fit your question |
-| `/ai-methodologist` | Audit skills for staleness, advise on AI in research |
-
-### Coming Soon
-
-35 more personas are planned across all regions and traditions. The full roster:
+We're building toward 40 advisors spanning every major region and intellectual tradition. The full planned roster is below — we're prioritizing based on community interest.
 
 <details>
-<summary>School-Branded (27 total — 4 built, 23 planned)</summary>
+<summary>Full planned roster (click to expand)</summary>
 
-| Region | ID | School | Lens |
-|--------|-----|--------|------|
-| NA | `harvard-strategist` | Harvard Business School | Case method, industry analysis, competitive strategy |
-| NA | `wharton-quant` | Wharton | Econometrics, financial modeling, operations research |
-| NA | `chicago-economist` | Chicago Booth | Price theory, causal inference, rational choice |
-| NA | `stanford-behavioralist` | Stanford GSB | Behavioral science, OB, identity, design thinking |
-| NA | `kellogg-marketeer` | Kellogg | Marketing science, consumer behavior, experiments |
-| NA | `mit-systems` | MIT Sloan | Systems dynamics, computational social science |
-| NA | `columbia-pragmatist` | Columbia | Real options, platform economics, value investing |
-| NA | `rotman-integrator` | Rotman | Integrative thinking, design of business |
-| LATAM | `fgv-developmentalist` | FGV-EAESP | Institutional voids, development, informality |
-| LATAM | `egade-family` | EGADE | Family enterprise, multi-Latinas, succession |
-| EU | `insead-globalist` | INSEAD | Cross-cultural management, global teams |
-| EU | `lbs-financier` | London Business School | Global finance, corporate governance |
-| EU | `hec-brand` | HEC Paris | Luxury strategy, brand semiotics |
-| EU | `iese-humanist` | IESE | Stakeholder capitalism, business ethics |
-| EU | `rsm-sustainability` | RSM Erasmus | Sustainability, circular economy |
-| EU | `cbs-critical` | Copenhagen BS | Critical management, institutional logics |
-| EU | `oxford-ethicist` | Said (Oxford) | Responsible business, moral philosophy |
-| EU | `mannheim-engineer` | Mannheim | Mittelstand, manufacturing, operations precision |
-| APAC | `ceibs-navigator` | CEIBS | China state-capitalism, guanxi, institutional duality |
-| APAC | `isb-complexity` | ISB | India institutional complexity, jugaad innovation |
-| APAC | `nus-governance` | NUS | Asian family conglomerates, hub economies |
-| APAC | `keio-craftsman` | Keio | Kaizen, monozukuri, lean, long-termism |
-| APAC | `hkust-innovator` | HKUST | Chinese tech entrepreneurship |
-| AFR | `gibs-pioneer` | GIBS | African markets, Ubuntu leadership, BOP strategy |
-| AFR | `lagos-entrepreneur` | Lagos BS | West African informal economies |
-| ME | `auc-bridge` | AUC | MENA business, Islamic finance |
-| OCE | `agsm-integrator` | AGSM/UNSW | Asia-Pacific trade, resource economics |
+**North America:** `wharton-quant` (econometrics, financial modeling), `chicago-economist` (price theory, causal inference), `stanford-behavioralist` (behavioral science, identity), `kellogg-marketeer` (marketing science, experiments), `mit-systems` (systems dynamics, technology strategy), `columbia-pragmatist` (real options, platform economics), `rotman-integrator` (integrative thinking, wicked problems)
 
-</details>
+**Latin America:** `fgv-developmentalist` (institutional voids, development), `egade-family` (family enterprise, multi-Latinas)
 
-<details>
-<summary>Tradition-Branded (5 planned)</summary>
+**Europe:** `insead-globalist` (cross-cultural management), `lbs-financier` (global finance, governance), `hec-brand` (luxury strategy, brand semiotics), `iese-humanist` (stakeholder capitalism, ethics), `rsm-sustainability` (circular economy, ESG), `oxford-ethicist` (moral philosophy in business), `mannheim-engineer` (German manufacturing, operations)
 
-| ID | Tradition | Lens |
-|----|-----------|------|
-| `critical-theorist` | Critical Management Studies | Power, ideology, discourse |
-| `feminist-org` | Feminist Organizational Theory | Gender, care labor, intersectionality |
-| `indigenous-business` | Indigenous & Decolonial Business | Land-based economies, relational accountability |
-| `islamic-finance` | Islamic Economics | Riba prohibition, risk-sharing, ethical finance |
-| `complexity-scientist` | Complexity Economics | Emergence, agent-based models, non-equilibrium |
+**Asia-Pacific:** `isb-complexity` (India institutional complexity), `nus-governance` (Asian family conglomerates), `keio-craftsman` (kaizen, lean, long-termism), `hkust-innovator` (Chinese tech entrepreneurship)
 
-</details>
+**Africa & Middle East:** `lagos-entrepreneur` (West African informal economies), `auc-bridge` (MENA business, Islamic finance)
 
-<details>
-<summary>Historical Giants (8 total — 1 built, 7 planned)</summary>
+**Oceania:** `agsm-integrator` (Asia-Pacific trade, resource economics)
 
-| ID | Figure | Core Contribution |
-|----|--------|-------------------|
-| `herbert-simon` | Herbert A. Simon | Bounded rationality, satisficing, organizational design |
-| `daniel-kahneman` | Daniel Kahneman | Prospect theory, heuristics & biases |
-| `edith-penrose` | Edith Penrose | Resource-based view, firm growth |
-| `peter-drucker` | Peter Drucker | Management as liberal art, knowledge worker |
-| `ronald-coase` | Ronald Coase | Transaction costs, nature of the firm |
-| `philip-kotler` | Philip Kotler | Marketing management, social marketing |
-| `ck-prahalad` | C.K. Prahalad | Core competence, base of pyramid |
-| `mary-parker-follett` | Mary Parker Follett | Collaborative management, power-with |
+**Intellectual Traditions:** `critical-theorist`, `feminist-org`, `indigenous-business`, `islamic-finance`, `complexity-scientist`
+
+**Historical Giants:** `daniel-kahneman`, `edith-penrose`, `peter-drucker`, `ronald-coase`, `philip-kotler`, `ck-prahalad`, `mary-parker-follett`
 
 </details>
 
 ## Personal Advisors
 
-The global roster gives you intellectual traditions. Personal advisors give you the specific people in your academic life — your dissertation chair, a recurring Reviewer 2, the methodologist whose judgment you trust, your department's unwritten culture.
+The global roster gives you intellectual traditions. But what about the specific people in your academic life — the dissertation chair who always asks about boundary conditions, the Reviewer 2 who obsesses over endogeneity, the methodologist whose judgment you trust?
 
-```bash
-# Create from the template
-mkdir -p skills/personal/my-chair/references
-cp skills/personal/TEMPLATE.md skills/personal/my-chair/SKILL.md
+You can create **personal advisors** modeled on real people. They respond in that person's voice and style, and you can include them in faculty meeting panels alongside the global advisors.
 
-# Edit SKILL.md to match your advisor's actual thinking style, then re-run install
-./install.sh
-```
+Personal advisors stay on your machine — they're never uploaded or shared.
 
-Personal advisors are **gitignored** — they stay on your machine and never get pushed to GitHub. They work alongside the global personas, including in `/faculty-meeting` panels.
+To create one, see the step-by-step guide in [skills/personal/TEMPLATE.md](skills/personal/TEMPLATE.md). The key insight: mine your old feedback emails for patterns. The phrases your chair actually uses are worth more than any generic description.
 
-See [skills/personal/TEMPLATE.md](skills/personal/TEMPLATE.md) for the full template and tips on making personal advisors accurate (including mining real feedback emails for patterns).
+## How the Disagreement Works
 
-## Design Philosophy
+This is the core design decision and it's worth explaining.
 
-1. **Productive disagreement, not consensus.** Advisors are selected and instructed to argue sincerely from their tradition. A faculty meeting where everyone agrees has failed.
-2. **Each advisor seeks ground truth through their own lens.** They don't hedge or compromise. The researcher synthesizes — the advisors commit.
-3. **Distinct voice.** If you read the output without seeing the name, you can tell which tradition it comes from.
-4. **Honest about limits.** Every advisor names their blind spots. The critical theorist admits they're better at diagnosis than prescription. The Harvard strategist admits they center Western corporate forms.
-5. **Not a caricature.** Each persona represents the best version of its tradition, not a strawman.
+Every advisor in Faculty Meeting is explicitly instructed to **hold their ground.** When convened in a panel, they don't hedge, they don't split the difference, and they don't converge on comfortable consensus. They argue sincerely from their tradition because that's how you find the productive tensions in your research question.
 
-## How It's Built
+The Harvard strategist won't say "CBS makes a good point about power." They'll say "CBS is asking the wrong question — the phenomenon here is competitive, not political, and here's why the evidence supports that reading." And CBS will respond with exactly why Harvard's framing conceals what matters most.
 
-Each persona is a pair of Markdown files:
+The synthesis section maps the terrain of disagreement. It doesn't resolve it. **You** resolve it — you're the researcher, and now you've heard the strongest version of each argument.
 
-```
-skills/schools/harvard-strategist/
-├── SKILL.md              # Identity, advisory protocol, voice, disagreement rules
-└── references/
-    └── tradition.md      # Deep intellectual tradition: lineage, methodology, blind spots
-```
+This is how real intellectual progress works. Not agreement. Friction.
 
-Metadata in `catalog.yaml` powers the matching engine — domain, methodology, region, theoretical tradition, and `contrasts-with` relationships that ensure panels produce genuine friction.
+## Design Principles
 
-For the full architecture, see [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
+1. **Not a caricature.** Each persona represents the best version of its tradition. The Chicago economist isn't a strawman free-market ideologue — they're a rigorous scholar who takes price theory seriously as a lens.
+2. **Honest about limits.** Every advisor names their blind spots. The Harvard strategist admits they center Western corporate forms. The critical theorist admits they're better at diagnosis than prescription.
+3. **Actionable.** The advice helps you make a concrete decision — which theory, which method, which journal, how to frame your contribution.
+4. **Globally representative.** Not just Harvard and Wharton. African, Asian, Latin American, and Middle Eastern traditions are first-class voices with equal standing.
 
 ## Contributing
 
-Want to add a persona? See [CONTRIBUTING.md](CONTRIBUTING.md) for the process and [docs/ADDING-A-PERSONA.md](docs/ADDING-A-PERSONA.md) for the templates.
+Want to add a persona or improve one? See [CONTRIBUTING.md](CONTRIBUTING.md) for the process and [docs/ADDING-A-PERSONA.md](docs/ADDING-A-PERSONA.md) for the full template.
 
 The quality bar: invoke your persona with a real research question, then put it in a `/faculty-meeting` with its `contrasts-with` peers. If it produces meaningfully different advice and you can tell which tradition it comes from without reading the name — it's ready.
 

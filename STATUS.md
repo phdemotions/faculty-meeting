@@ -15,7 +15,7 @@
 | **Personas Built** | 5 of 40 (harvard-strategist, ceibs-navigator, gibs-pioneer, cbs-critical, herbert-simon) |
 | **Meta-Skills** | 3 (faculty-meeting, find-advisor, ai-methodologist) |
 | **Distribution** | Plugin format (.claude-plugin) + legacy install.sh with auto-update |
-| **Open Issues** | P0: 0, P1: 0, P2: 0, P3: 0 |
+| **Open Issues** | P0: 0, P1: 3, P2: 1, P3: 0 |
 | **Stack** | Claude Code plugin (.md skills), YAML catalog, shell installer |
 | **GitHub** | phdemotions/faculty-meeting (public) |
 

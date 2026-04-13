@@ -1,6 +1,6 @@
 # Faculty Meeting — Status
 
-> **Last Updated:** 2026-04-10
+> **Last Updated:** 2026-04-12
 > **Phase:** Phase 1 Complete + Feedback Infrastructure
 > **Build:** Clean — all systems deployed and verified
 
@@ -14,15 +14,23 @@
 | **Build Status** | Phase 1 complete + feedback endpoint live |
 | **Personas Built** | 5 of 40 (harvard-strategist, ceibs-navigator, gibs-pioneer, cbs-critical, herbert-simon) |
 | **Meta-Skills** | 4 (faculty-meeting, find-advisor, ai-methodologist, report-issue) |
-| **Distribution** | Plugin format (.claude-plugin) + legacy install.sh with auto-update |
+| **Distribution** | Plugin installed globally — `faculty-meeting@phdemotions-faculty-meeting`, auto-updates via GitHub SHA |
 | **Feedback Endpoint** | https://faculty-meeting.vercel.app/api/feedback — live, verified |
-| **Open Issues** | P0: 0, P1: 4, P2: 1, P3: 0 |
+| **Open Issues** | P0: 0, P1: 3, P2: 1, P3: 0 |
 | **Stack** | Claude Code plugin (.md skills), YAML catalog, shell installer, Vercel serverless |
 | **GitHub** | phdemotions/faculty-meeting (public) |
 
 ---
 
 ## What's Done
+
+### 2026-04-12 — Plugin Installation
+
+- [x] Fixed bug in `.claude-plugin/plugin.json` — skills path was `./.claude/skills/` (wrong), corrected to `./skills/`
+- [x] Manually installed plugin into Claude Code globally: marketplaces/, cache/, known_marketplaces.json, installed_plugins.json
+- [x] Plugin registered as `faculty-meeting@phdemotions-faculty-meeting` — available across all projects
+- [x] Auto-update configured: Claude Code tracks `gitCommitSha` and pulls from `phdemotions/faculty-meeting` on startup
+- [ ] Restart Claude Code required to activate in running sessions
 
 ### 2026-04-10 (Session 3) — Feedback Infrastructure + Privacy
 
@@ -73,7 +81,7 @@
 | Phase 2: Build ~15 core personas (NA, EU, APAC, LATAM, traditions, giants) | P1 |
 | Test /faculty-meeting with 3-4 diverse compositions | P1 |
 | Test /ai-methodologist audit on built personas | P1 |
-| Test plugin install on clean Claude Code config | P2 |
+| Test plugin in next session (confirm skills appear in autocomplete) | P1 |
 | Phase 3: Complete full 40-persona roster | P2 |
 | Phase 4: Final polish, GitHub release, git tag v0.1.0 | P3 |
 
@@ -83,6 +91,7 @@
 
 | Date | Summary |
 |------|---------|
+| 2026-04-12 | Plugin installed globally — fixed plugin.json skills path bug, registered in all 4 Claude Code plugin files |
 | 2026-04-10 | Session 3: Feedback infrastructure — Vercel endpoint, privacy-first diagnostics, three-tier fallback, faculty meeting on frustration detection |
 | 2026-04-10 | Session 2: README rewrite, /report-issue, audit fixes |
 | 2026-04-10 | Session 1: Phase 1 complete — 5 personas, 3 meta-skills, plugin distribution, personal advisors |

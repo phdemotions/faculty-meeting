@@ -20,5 +20,5 @@
     "peer-review",
     "personas"
   ],
-  "skills": "./.claude/skills/"
+  "skills": "./skills/"
 }

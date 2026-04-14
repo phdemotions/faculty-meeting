@@ -3,11 +3,17 @@
   "owner": {
     "name": "phdemotions"
   },
+  "metadata": {
+    "description": "40 research advisor personas from global business school traditions, intellectual movements, and foundational thinkers.",
+    "version": "0.1.0"
+  },
   "plugins": [
     {
       "name": "faculty-meeting",
-      "source": ".",
-      "description": "Research advisor personas from 40 global intellectual traditions. Convene panels for productive disagreement about your research questions."
+      "source": "./",
+      "description": "Research advisor personas from 40 global intellectual traditions. Convene panels for productive disagreement about your research questions.",
+      "version": "0.1.0",
+      "strict": true
     }
   ]
 }

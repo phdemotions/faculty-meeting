@@ -54,9 +54,9 @@ Determine severity — again, internal:
 - `major` — Significant miss that undermines the advice quality (e.g., generic response that could come from any advisor)
 - `minor` — Tone drift or small omission that didn't ruin the advice but was noticeable
 
-### Step 3: Build a Diagnostic Issue (YOU Have the Context)
+### Step 3: Build a Diagnostic Issue (You Have the Context)
 
-**This is the critical step.** You are not just relaying what the researcher said — you have the full conversation in front of you. Use it to build a diagnostic report about the **advisor's performance**. A maintainer reading this issue should be able to understand exactly how the persona failed and where to fix it.
+You are not just relaying what the researcher said — you have the full conversation in front of you. Use it to build a diagnostic report about the **advisor's performance**. A maintainer reading this issue should be able to understand exactly how the persona failed and where to fix it.
 
 **PRIVACY RULE: The issue must contain ZERO information about the researcher or their work.** No research questions, no draft text, no topic details, no quotes from the researcher's input. The issue is exclusively about how the advisor performed — not what it was asked about. Describe the *type* of question generically (e.g., "a question about institutional theory in emerging markets") but never include the actual question.
 
@@ -183,7 +183,7 @@ Tell the researcher the feedback has been sent. Keep it brief and warm:
 
 ## Important Rules
 
-- **Never make the researcher feel like they're filling out a form.** This is a conversation, not a ticket system. The researcher gives you a sentence or two. YOU do the diagnostic work using the full conversation context.
+- **Never make the researcher feel like they're filling out a form.** This is a conversation, not a ticket system. The researcher gives you a sentence or two. You do the diagnostic work using the full conversation context.
 - **Never use technical jargon.** No "GitHub issue," no "repository," no "labels" — unless they bring it up first.
 - **Always use the `persona-feedback` label** so maintainers can filter.
 - **Be grateful.** Every piece of feedback makes the advisors better for every researcher who uses them.
